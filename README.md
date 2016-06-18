@@ -3,4 +3,4 @@ A simple node webserver using express. The seed has a register and login functio
 
 # Usage
 
-The seed is runnable after running "npm install" by running "gulp" in the command line. Tokens are provided either by processing a valid username/password combination or by providing a valid refresh token (which is provided alongside the access-token). The access-token can then be in the "Authorization" header on API requests that require validation, given that the request use the validation middleware.
+The seed is runnable after running "npm install" by running "node server/server.js" in the command line. Tokens are provided either by processing a valid username/password combination or by providing a valid refresh token (which is provided alongside the access-token). The access-token can then be in the "Authorization" header on API requests that require validation, given that the request use the validation middleware.
