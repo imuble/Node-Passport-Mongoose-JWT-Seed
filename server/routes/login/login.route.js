@@ -7,7 +7,8 @@ var verifyRefreshToken = require('./verifyRefreshToken');
 var verifyToken = require('./verifyToken');
 
 module.exports = function () {
-    router.post('/login',
+
+    router.post('/',
         authenticate,
         signToken,
         function (req, res) {
@@ -17,7 +18,7 @@ module.exports = function () {
     );
 
 
-    router.get('/login/refresh', verifyRefreshToken, refreshToken, function (req, res) {
+    router.get('/refresh', verifyRefreshToken, refreshToken, function (req, res) {
 		if (req.data) {
 			return res.status(200).json(req.data);
 		}

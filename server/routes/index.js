@@ -7,7 +7,7 @@ module.exports = function () {
 	router.get('/', function (req, res) {
 		res.send('Welcome');
 	});
-	router.use('/', loginRouter());
-    router.use('/', userRouter());
+	router.use('/login', loginRouter());
+    router.use('/user', userRouter());
 	return router;
 };

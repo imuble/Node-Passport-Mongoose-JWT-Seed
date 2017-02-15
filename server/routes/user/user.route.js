@@ -7,7 +7,7 @@ var validator = require('validator');
 var verifyToken = require('../login/verifyToken');
 
 module.exports = function () {
-    router.post('/user',
+    router.post('/',
         requestValidator,
         uniqueValidator,
         function (req, res) {
