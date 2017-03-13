@@ -1,13 +1,15 @@
-var express = require('express');
-var router = express.Router();
-var loginRouter = require('./login/login.route');
-var userRouter = require('./user/user.route');
+'use strict';
+
+const express = require('express');
+const router = express.Router();
+const loginRouter = require('./login/login.route');
+const userRouter = require('./user/user.route');
 
 module.exports = function () {
-	router.get('/', function (req, res) {
-		res.send('Welcome');
-	});
-	router.use('/login', loginRouter());
-    router.use('/user', userRouter());
-	return router;
+  router.get('/', function (req, res) {
+    res.send('Welcome');
+  });
+  router.use('/login', loginRouter());
+  router.use('/user', userRouter());
+  return router;
 };
