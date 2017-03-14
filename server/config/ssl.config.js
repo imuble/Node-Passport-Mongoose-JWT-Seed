@@ -1,4 +1,9 @@
 'use strict';
 
-// Docker installed self-signed certs at /certs/selfsigned.crt, etc
-// TODO specify config for cert location.
+// See Dockerfile for location of self-signed cert.
+module.exports = {
+  SSL: {
+    PRIVATE_KEY: '/certs/cert.key',
+    CERT: '/certs/cert.crt'
+  }
+};

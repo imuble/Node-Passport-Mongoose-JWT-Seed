@@ -4,7 +4,7 @@ WORKDIR /home/app/current/
 
 ENV KEY_NAME cert
 ENV COMMON_NAME localhost
-ENV CERT_DIR /certs
+ENV CERT_DIR /certs/
 
 RUN apk --update add openssl
 RUN echo "Making key at ${WORK_DIR}${KEY_NAME}.key"

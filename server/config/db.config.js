@@ -2,8 +2,8 @@
 
 const db = {
   DATABASE: {
-    test: 'mongodb://db/test',
-    production: 'mongodb://db/production'
+    // Host is 'db' b/c docker-compose network
+    uri: 'mongodb://db/test'
   }
 };
 
