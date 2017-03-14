@@ -1,0 +1,25 @@
+version: '3'
+services:
+  # -------- Primary Service --------
+  app:
+    # TODO change to the appropriate, published image/tag:
+    image: node-passport-mongoose-jwt-seed
+    volumes:
+      # Share logs folder back out to host machine (at ./logs) so we can view them.
+      - /var/log:/home/app/data/logs
+    depends_on:
+      - db
+    environment:
+      - NODE_ENV=production
+    restart: always
+    ports:
+      - "3000:3000"
+
+  # ----- Primary Data Storage -----
+  db:
+    image: mongo:3.4
+    ports:
+      - "27017:27017"
+    # Mongo talks too much
+    #logging:
+        #driver: "none"

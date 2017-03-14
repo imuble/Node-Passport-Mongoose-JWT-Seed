@@ -1,0 +1,35 @@
+version: '3'
+services:
+  # -------- Primary Service --------
+  app:
+    # --- dev ---
+    # During docker-compose up, build an image based on ./Dockerfile if necessary.
+    build: .
+    # Name that image. It will be saved on your system.
+    image: node-passport-mongoose-jwt-seed
+    working_dir: /home/app/current/
+    command: "npm run start:dev"
+    volumes:
+      # While working on this service, share source code into /home/app/current for rapid iteration.
+      # REMEMBER TO npm install IN YOUR HOST MACHINE since you're over-writing the container's node_modules folder here.
+      - ${PWD}:/home/app/current
+    depends_on:
+      - db
+    environment:
+     - NODE_ENV=development
+
+    # Note: use localhost:8443 or localhost:8080 to access the app.
+    # Internally, the app uses 8443 and 8080.
+    ports:
+      - "8080:8080"
+      - "8443:8443"
+  # --- end dev ---
+
+  # ----- Primary Data Storage -----
+  db:
+    image: mongo:3.4
+    ports:
+      - "27017:27017"
+    # Mongo talks too much
+    #logging:
+        #driver: "none"
