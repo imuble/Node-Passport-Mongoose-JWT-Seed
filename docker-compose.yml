@@ -1,0 +1,47 @@
+version: '3'
+services:
+  # -------- Primary Service --------
+  app:
+    # --- dev ---
+    # During docker-compose up, build an image based on ./Dockerfile if necessary.
+    build: .
+    # Name that image. It will be saved on your system.
+    image: node-passport-mongoose-jwt-seed
+    working_dir: /home/app/current/
+    command: "npm run start:dev"
+    volumes:
+      # While working on this service, share source code into /home/app/current for rapid iteration.
+      - ${PWD}:/home/app/current
+      # Share logs folder back out to host machine (at ./logs) so we can view them easily during development.
+      - ${PWD}/logs:/home/app/data/logs
+    depends_on:
+      - db
+    environment:
+     - NODE_ENV=development
+
+    # Note: use localhost:443 to access the app (via the proxy)
+    ports:
+      - "3000:3000"
+  # --- end dev ---
+
+
+  # proxy:
+  #   build:
+  #     context: ./proxy
+  #     dockerfile: Dockerfile-proxy
+  #   image: nginx-self-signed
+  #   volumes:
+  #     - ./proxy/proxy.conf:/etc/nginx/conf.d/default.conf
+  #     - /var/run/docker.sock:/tmp/docker.sock:ro
+  #   ports:
+  #     - 443:443
+
+
+  # ----- Primary Data Storage -----
+  db:
+    image: mongo:3.4
+    ports:
+      - "27017:27017"
+    # Mongo talks too much
+    #logging:
+        #driver: "none"

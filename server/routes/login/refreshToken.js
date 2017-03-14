@@ -1,9 +1,6 @@
 'use strict';
 
-const jwt = require('jsonwebtoken');
-const serverConfig = require('../../config/server.config');
 const User = require('../../models/user/user.model');
-const constants = require('../../config/constants.config');
 const signToken = require('./signToken');
 
 module.exports = function (req, res, next) {

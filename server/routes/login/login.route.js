@@ -18,7 +18,6 @@ module.exports = function () {
     else return res.status(500).send();
   });
 
-
   router.get('/refresh', verifyRefreshToken, refreshToken, function (req, res) {
     if (req.data) {
       return res.status(200).json(req.data);

@@ -2,8 +2,8 @@
 
 const db = {
   DATABASE: {
-    test: 'mongodb://localhost/test',
-    production: 'mongodb://localhost/production'
+    test: 'mongodb://db/test',
+    production: 'mongodb://db/production'
   }
 };
 
